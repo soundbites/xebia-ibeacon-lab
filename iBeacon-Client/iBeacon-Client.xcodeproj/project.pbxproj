@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A148C5817BA7D2B0014E6A2 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A148C5717BA7D2B0014E6A2 /* CoreBluetooth.framework */; };
+		4A148C5A17BA7D360014E6A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A148C5917BA7D360014E6A2 /* CoreLocation.framework */; };
 		CA1A403017BA7BC900030ABF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1A402F17BA7BC900030ABF /* Foundation.framework */; };
 		CA1A403217BA7BC900030ABF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1A403117BA7BC900030ABF /* CoreGraphics.framework */; };
 		CA1A403417BA7BC900030ABF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1A403317BA7BC900030ABF /* UIKit.framework */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A148C5717BA7D2B0014E6A2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4A148C5917BA7D360014E6A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CA1A402C17BA7BC900030ABF /* iBeacon-Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iBeacon-Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A402F17BA7BC900030ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CA1A403117BA7BC900030ABF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A148C5A17BA7D360014E6A2 /* CoreLocation.framework in Frameworks */,
+				4A148C5817BA7D2B0014E6A2 /* CoreBluetooth.framework in Frameworks */,
 				CA1A403217BA7BC900030ABF /* CoreGraphics.framework in Frameworks */,
 				CA1A403417BA7BC900030ABF /* UIKit.framework in Frameworks */,
 				CA1A403017BA7BC900030ABF /* Foundation.framework in Frameworks */,
@@ -103,6 +109,8 @@
 		CA1A402E17BA7BC900030ABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A148C5917BA7D360014E6A2 /* CoreLocation.framework */,
+				4A148C5717BA7D2B0014E6A2 /* CoreBluetooth.framework */,
 				CA1A402F17BA7BC900030ABF /* Foundation.framework */,
 				CA1A403117BA7BC900030ABF /* CoreGraphics.framework */,
 				CA1A403317BA7BC900030ABF /* UIKit.framework */,
@@ -469,6 +477,7 @@
 				CA1A406317BA7BC900030ABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA1A406417BA7BC900030ABF /* Build configuration list for PBXNativeTarget "iBeacon-ClientTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +486,7 @@
 				CA1A406617BA7BC900030ABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
