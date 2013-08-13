@@ -92,9 +92,9 @@
             if ([beacon.minor isEqualToNumber:@2]) {
                 return [[XKEPerson alloc] initWithName:@"Rajdeep Mann" image:[UIImage imageNamed:@"randeep_mann.jpg"] vicinity:XKEPersonVicinityClose];
             } else if ([beacon.minor isEqualToNumber:@3]) {
-                [[XKEPerson alloc] initWithName:@"Jeroen Leenarts" image:[UIImage imageNamed:@"JeroenLeenarts.jpg"] vicinity:XKEPersonVicinityClose];
+                return [[XKEPerson alloc] initWithName:@"Jeroen Leenarts" image:[UIImage imageNamed:@"JeroenLeenarts.jpg"] vicinity:XKEPersonVicinityClose];
             }  else if ([beacon.minor isEqualToNumber:@4]) {
-                [[XKEPerson alloc] initWithName:@"Robert van Loghem" image:[UIImage imageNamed:@"Robert-van-Loghem.jpg"] vicinity:XKEPersonVicinityClose];
+                return [[XKEPerson alloc] initWithName:@"Robert van Loghem" image:[UIImage imageNamed:@"Robert-van-Loghem.jpg"] vicinity:XKEPersonVicinityClose];
             }
         }
         return [[XKEPerson alloc] initWithName:@"Unknown" image:[UIImage imageNamed:@"unknown-person.jpg"] vicinity:XKEPersonVicinityClose];
@@ -118,6 +118,7 @@
     _region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:@"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"] identifier:@"nl.xebia.xke"];
     _region.notifyOnEntry = YES;
     _region.notifyOnExit = YES;
+    _region.notifyEntryStateOnDisplay = YES;
     [_locationManager startMonitoringForRegion:_region];
 }
 
