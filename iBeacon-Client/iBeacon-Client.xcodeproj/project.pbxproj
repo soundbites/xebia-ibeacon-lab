@@ -22,6 +22,8 @@
 		CA1A405417BA7BC900030ABF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1A403317BA7BC900030ABF /* UIKit.framework */; };
 		CA1A405C17BA7BC900030ABF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA1A405A17BA7BC900030ABF /* InfoPlist.strings */; };
 		CA1A405E17BA7BC900030ABF /* iBeacon_ClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1A405D17BA7BC900030ABF /* iBeacon_ClientTests.m */; };
+		CA1A406A17BA7E4400030ABF /* location-off.png in Resources */ = {isa = PBXBuildFile; fileRef = CA1A406717BA7E4400030ABF /* location-off.png */; };
+		CA1A406B17BA7E4400030ABF /* location-on.png in Resources */ = {isa = PBXBuildFile; fileRef = CA1A406817BA7E4400030ABF /* location-on.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		CA1A405917BA7BC900030ABF /* iBeacon-ClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeacon-ClientTests-Info.plist"; sourceTree = "<group>"; };
 		CA1A405B17BA7BC900030ABF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA1A405D17BA7BC900030ABF /* iBeacon_ClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iBeacon_ClientTests.m; sourceTree = "<group>"; };
+		CA1A406717BA7E4400030ABF /* location-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location-off.png"; path = "Resources/location-off.png"; sourceTree = "<group>"; };
+		CA1A406817BA7E4400030ABF /* location-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location-on.png"; path = "Resources/location-on.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				CA1A404417BA7BC900030ABF /* Main_iPad.storyboard */,
 				CA1A404717BA7BC900030ABF /* XKEViewController.h */,
 				CA1A404817BA7BC900030ABF /* XKEViewController.m */,
+				CA1A406717BA7E4400030ABF /* location-off.png */,
+				CA1A406817BA7E4400030ABF /* location-on.png */,
 				CA1A404A17BA7BC900030ABF /* Images.xcassets */,
 				CA1A403617BA7BC900030ABF /* Supporting Files */,
 			);
@@ -233,6 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1A404617BA7BC900030ABF /* Main_iPad.storyboard in Resources */,
+				CA1A406B17BA7E4400030ABF /* location-on.png in Resources */,
+				CA1A406A17BA7E4400030ABF /* location-off.png in Resources */,
 				CA1A404B17BA7BC900030ABF /* Images.xcassets in Resources */,
 				CA1A404317BA7BC900030ABF /* Main_iPhone.storyboard in Resources */,
 				CA1A403A17BA7BC900030ABF /* InfoPlist.strings in Resources */,
@@ -469,6 +477,7 @@
 				CA1A406317BA7BC900030ABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA1A406417BA7BC900030ABF /* Build configuration list for PBXNativeTarget "iBeacon-ClientTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +486,7 @@
 				CA1A406617BA7BC900030ABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
