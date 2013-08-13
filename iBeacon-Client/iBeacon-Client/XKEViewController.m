@@ -15,11 +15,15 @@
 @property (nonatomic, strong) NSNumber *minor;
 @property (nonatomic, strong) NSNumber *power;
 @property (nonatomic, strong) NSUUID *uuid;
+@property (nonatomic, strong) UILongPressGestureRecognizer * longPressureGesture;
 @end
 
 @implementation XKEViewController
 
 - (void)viewDidLoad{
+    _longPressureGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didDetectLongPressGesture:)];
+    [self.navigationController.navigationBar addGestureRecognizer:_longPressureGesture];
+    
     _uuid = [[NSUUID alloc] initWithUUIDString:@"E2C56DB5-DFFB-48D2-B060-D0F5A71096E0"];
     _major = @(5);
     _minor = @(2);
@@ -84,5 +88,29 @@
     }
 }
 
+- (void)didDetectLongPressGesture:(UILongPressGestureRecognizer *)longPressGesture{
+    if (longPressGesture.state == UIGestureRecognizerStateEnded) {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"Enter minor version" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+        alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alertView show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self.longPressureGesture setEnabled:YES];
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        UITextField * textField = [alertView textFieldAtIndex:0];
+        if ([textField.text length] > 0) {
+            _minor = @([textField.text intValue]);
+
+            //reset the peripheral data
+            self.peripheralData = nil;
+            
+            //stop and start advertising
+            [self.beaconManager stopAdvertising];
+            [self.beaconManager startAdvertising:self.peripheralData];
+        }
+    }
+}
 
 @end
