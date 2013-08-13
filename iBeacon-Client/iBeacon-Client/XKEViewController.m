@@ -51,7 +51,7 @@
 
 -(NSDictionary *)peripheralData{
     if (_peripheralData == nil) {
-        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:_uuid major:[_major shortValue] minor:[_minor shortValue] identifier:@"com.apple.AirLocate"];
+        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:_uuid major:[_major shortValue] minor:[_minor shortValue] identifier:@"nl.xebia.xke"];
         _peripheralData = [region peripheralDataWithMeasuredPower:_power];
     }
     return _peripheralData;
