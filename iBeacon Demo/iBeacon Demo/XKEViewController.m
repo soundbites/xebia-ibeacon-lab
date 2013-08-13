@@ -18,8 +18,16 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"XKE iBeacon", nil);
-    self.view.backgroundColor = [UIColor redColor];
+
+
+    UICollectionView *collectionView = [[UICollectionView alloc] init];
+
+
+
+
 }
+
+
 
 
 @end
