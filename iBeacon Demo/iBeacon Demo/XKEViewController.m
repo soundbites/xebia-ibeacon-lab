@@ -76,7 +76,12 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(CGRectGetWidth(collectionView.bounds) / 2, CGRectGetWidth(collectionView.bounds) / 2);
+
+    XKEPerson *person = _people[indexPath.row];
+
+    CGFloat heightAndWidth = (person.vicinity == XKEPersonVicinityClose) ? CGRectGetWidth(collectionView.bounds) / 2 : CGRectGetWidth(collectionView.bounds) / 4;
+
+    return CGSizeMake(heightAndWidth, heightAndWidth);
 }
 
 #pragma mark cllocation manager
@@ -87,18 +92,28 @@
 
     NSArray *oldPeople = _people;
 
-    _people = [[beacons rac_sequence] map:^id(CLBeacon *beacon) {
+    NSArray *allBeaconsAsPeople = [[beacons rac_sequence] map:^id(CLBeacon *beacon) {
+        XKEPersonVicinity vicinity = (beacon.proximity == CLProximityFar || beacon.proximity == CLProximityUnknown) ? XKEPersonVicinityAway : XKEPersonVicinityClose;
+
         if ([beacon.major isEqualToNumber:@5]) {
             if ([beacon.minor isEqualToNumber:@2]) {
-                return [[XKEPerson alloc] initWithName:@"Rajdeep Mann" image:[UIImage imageNamed:@"randeep_mann.jpg"] vicinity:XKEPersonVicinityClose];
+                return [[XKEPerson alloc] initWithName:@"Rajdeep Mann" image:[UIImage imageNamed:@"randeep_mann.jpg"] vicinity:vicinity];
             } else if ([beacon.minor isEqualToNumber:@3]) {
-                return [[XKEPerson alloc] initWithName:@"Jeroen Leenarts" image:[UIImage imageNamed:@"JeroenLeenarts.jpg"] vicinity:XKEPersonVicinityClose];
+                return [[XKEPerson alloc] initWithName:@"Jeroen Leenarts" image:[UIImage imageNamed:@"JeroenLeenarts.jpg"] vicinity:vicinity];
             }  else if ([beacon.minor isEqualToNumber:@4]) {
-                return [[XKEPerson alloc] initWithName:@"Robert van Loghem" image:[UIImage imageNamed:@"Robert-van-Loghem.jpg"] vicinity:XKEPersonVicinityClose];
+                return [[XKEPerson alloc] initWithName:@"Robert van Loghem" image:[UIImage imageNamed:@"Robert-van-Loghem.jpg"] vicinity:vicinity];
             }
         }
-        return [[XKEPerson alloc] initWithName:@"Unknown" image:[UIImage imageNamed:@"unknown-person.jpg"] vicinity:XKEPersonVicinityClose];
+        return [[XKEPerson alloc] initWithName:@"Unknown" image:[UIImage imageNamed:@"unknown-person.jpg"] vicinity:vicinity];
     }].array;
+
+    _people = [[[NSSet setWithArray:allBeaconsAsPeople] allObjects] sortedArrayUsingComparator:^NSComparisonResult(XKEPerson *this, XKEPerson *that) {
+        if (this.vicinity != that.vicinity) {
+            return (this.vicinity == XKEPersonVicinityClose) ? NSOrderedAscending :NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
 
     [_collectionView performBatchUpdates:^{
         [XKECollectionViewAnimatedHelper generateUpdatesForCollectionView:_collectionView inSection:0 oldData:oldPeople newData:_people];
