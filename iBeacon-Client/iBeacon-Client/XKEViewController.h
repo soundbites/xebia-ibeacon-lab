@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface XKEViewController : UIViewController
+@interface XKEViewController : UIViewController<CLLocationManagerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIButton * startButton;
+@property (strong, nonatomic) IBOutlet UIImageView * locationImageView;
+
+- (IBAction)didTapStartButton:(id)sender;
 
 @end
