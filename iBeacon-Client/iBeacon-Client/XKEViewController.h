@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface XKEViewController : UIViewController<CLLocationManagerDelegate>
+@interface XKEViewController : UIViewController<CBPeripheralManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton * startButton;
 @property (strong, nonatomic) IBOutlet UIImageView * locationImageView;
