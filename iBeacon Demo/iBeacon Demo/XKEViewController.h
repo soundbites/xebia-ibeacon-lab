@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface XKEViewController : UIViewController
+@class XKEPerson;
 
+@interface XKEViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, CLLocationManagerDelegate>
+
+- (void)start;
+
+- (void)stop;
 @end
