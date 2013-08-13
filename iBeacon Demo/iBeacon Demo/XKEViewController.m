@@ -119,14 +119,14 @@
     _region.notifyOnEntry = YES;
     _region.notifyOnExit = YES;
     _region.notifyEntryStateOnDisplay = YES;
-    [_locationManager startMonitoringForRegion:_region];
+    [_locationManager startRangingBeaconsInRegion:_region];
 }
 
 - (void)stop {
 
     NSLog(@"%s", __PRETTY_FUNCTION__);
 
-    [_locationManager stopMonitoringForRegion:_region];
+    [_locationManager stopRangingBeaconsInRegion:_region];
 
 }
 @end
