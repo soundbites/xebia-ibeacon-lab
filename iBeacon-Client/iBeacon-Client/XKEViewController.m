@@ -8,14 +8,13 @@
 
 #import "XKEViewController.h"
 
-@interface XKEViewController (){
-    NSUUID *_uuid;
-    NSNumber *_major;
-    NSNumber *_minor;
-    NSNumber *_power;
-}
+@interface XKEViewController ()
 @property (nonatomic, strong) NSDictionary * peripheralData;
 @property (nonatomic, strong) CBPeripheralManager *beaconManager;
+@property (nonatomic, strong) NSNumber *major;
+@property (nonatomic, strong) NSNumber *minor;
+@property (nonatomic, strong) NSNumber *power;
+@property (nonatomic, strong) NSUUID *uuid;
 @end
 
 @implementation XKEViewController
@@ -25,6 +24,8 @@
     _major = @(5);
     _minor = @(2);
     _power = @-59;
+    _beaconManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    _beaconManager.delegate = self;
 }
 
 - (IBAction)didTapStartButton:(id)sender{
@@ -41,18 +42,10 @@
     }
 }
 
-- (CBPeripheralManager *)beaconManager{
-    if (_beaconManager == nil) {
-        _beaconManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
-        _beaconManager.delegate = self;
-    }
-    return _beaconManager;
-}
-
 -(NSDictionary *)peripheralData{
     if (_peripheralData == nil) {
-        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:_uuid major:[_major shortValue] minor:[_minor shortValue] identifier:@"nl.xebia.xke"];
-        _peripheralData = [region peripheralDataWithMeasuredPower:_power];
+        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:self.uuid major:[self.major shortValue] minor:[self.minor shortValue] identifier:@"nl.xebia.xke"];
+        _peripheralData = [region peripheralDataWithMeasuredPower:self.power];
     }
     return _peripheralData;
 }
@@ -80,6 +73,14 @@
             NSLog(@"I didn't want you to show you: %d",peripheral.state);
             break;
         }
+    }
+}
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error{
+    if (error ==  nil) {
+        NSLog(@"peripheralManagerDidStartAdvertising");
+    }else{
+        NSLog(@"peripheralManagerFailedToStartAdvertising: %@",error);
     }
 }
 
